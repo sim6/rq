@@ -105,8 +105,7 @@ def handle_shutdown_command(worker: 'Worker'):
         worker (Worker): The worker to use.
     """
     worker.log.info('Received shutdown command, sending SIGINT signal.')
-    pid = os.getpid()
-    os.kill(pid, signal.SIGINT)
+    os.kill(worker.pid, signal.SIGINT)
 
 
 def handle_kill_worker_command(worker: 'Worker', payload: Dict[Any, Any]):
